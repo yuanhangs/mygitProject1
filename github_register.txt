@@ -1,9 +1,7 @@
-https://www.runoob.com/w3cnote/git-guide.html
-1> 注册账户以及创建仓库
+﻿https://www.runoob.com/w3cnote/git-guide.html
+
+   注册账户以及创建仓库
    第一步当然是注册github账号
    github官网地址：https://github.com/
-   
-   Create a New Repository，填好名称后Create，
-   之后会出现一些仓库的配置信息，这也是一个git的简单教程。
    
    https://blog.csdn.net/qq_40323256/article/details/92384334
