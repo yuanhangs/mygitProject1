@@ -8,5 +8,6 @@ package net;
 public class Test1 {
     public static void main(String[] args) {
         System.out.println("this is a new table!");
+        System.out.println("she is putting her hats on the head!");
     }
 }
