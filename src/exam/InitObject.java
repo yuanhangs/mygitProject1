@@ -49,7 +49,7 @@ public class InitObject {
             oos = new ObjectOutputStream(fos);
             //写入
             oos.writeObject(map);
-            System.out.println("写入文件成功！");
+//            System.out.println("写入文件成功！");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

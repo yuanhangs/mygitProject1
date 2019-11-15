@@ -1,6 +1,7 @@
 package exam;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -24,6 +25,11 @@ public class Equipment implements Serializable {
         this.eid = eid;
         this.name = name;
         this.type = type;
+        this.date = date;
+    }
+
+    public Equipment(int eid, Date date) {
+        this.eid = eid;
         this.date = date;
     }
 
@@ -65,7 +71,7 @@ public class Equipment implements Serializable {
                 "eid=" + eid +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", date=" + date +
+                ", date=" + new SimpleDateFormat("yyyy-MM-dd").format(date) +
                 '}';
     }
 }

@@ -25,10 +25,12 @@ public class BaseService {
 
     /**
      * 登录
+     *
      * @param user
      */
     public static boolean login(String name, String pass) {
         boolean flag = false;
+//        System.out.println(InitObject.lists.size());
         //在集合中遍历数据
         for (User us : InitObject.lists) {
             if (us.getName().equals(name) && us.getPass().equals(pass)) {
@@ -38,7 +40,7 @@ public class BaseService {
                 flag = false;
             }
         }
-        return false;
+        return flag;
     }
 
     /**
@@ -63,21 +65,22 @@ public class BaseService {
 
     /**
      * 根据类型查询数据==>统计几台
+     *
      * @param type
      * @return
      */
     public static int findType(String type) {
-        int count=0;
+        int count = 0;
         //获得map
-        Map<Integer,Equipment> map = InitObject.map;
+        Map<Integer, Equipment> map = InitObject.map;
         //遍历查找
-        for (Integer key:map.keySet()) {
+        for (Integer key : map.keySet()) {
             //获得key
-           Equipment eq =map.get(key);
-           //比较是否相等
-           if(eq.getType().equals(type)){
-              count++;  //累计有几个
-           }
+            Equipment eq = map.get(key);
+            //比较是否相等
+            if (eq.getType().equals(type)) {
+                count++;  //累计有几个
+            }
         }
         return count;
     }
@@ -85,69 +88,100 @@ public class BaseService {
 
     /**
      * 添加设备，并写入到本地文件中
+     *
      * @param eq
      * @param fileName
      */
-  public static void add(Equipment eq,File fileName){
-      //获得map
-      Map<Integer,Equipment> map = InitObject.map;
-      //添加数据
-      map.put(eq.getEid(),eq);
-      System.out.println("入库成功!");
-      //写入文件中
-      InitObject.SerializedObject(map,fileName);
+    public static void add(Equipment eq, File fileName) {
+        //获得map
+        Map<Integer, Equipment> map = InitObject.map;
+        //添加数据
+        map.put(eq.getEid(), eq);
+        System.out.println("入库成功!");
+        //写入文件中
+        InitObject.SerializedObject(map, fileName);
 
 
-
-  }
+    }
 
     /**
      * 删除设备，并写入到本地文件中
+     *
      * @param eq
      * @param fileName
      */
-    public static void del(int eid,File fileName){
+    public static void del(int eid, File fileName) {
+        int count = 0; //标记
         //获得map
-        Map<Integer,Equipment> map = InitObject.map;
+        Map<Integer, Equipment> map = InitObject.map;
         //遍历查找
-        for (Integer key:map.keySet()) {
-            if(key==eid){
+        for (Integer key : map.keySet()) {
+            if (key == eid) {
                 //删除
                 map.remove(key);
+                count = 1;
                 break;
             }
         }
-        System.out.println("删除成功!");
-        //写入文件中
-        InitObject.SerializedObject(map,fileName);
-
+        if (count == 1) {
+            System.out.println("删除成功!");
+            //写入文件中
+            InitObject.SerializedObject(map, fileName);
+        } else {
+            System.out.println("没有此设备编号=>" + eid);
+        }
     }
 
 
     /**
+     * 根据ID查找是否有数据哦
+     *
+     * @param id
+     * @return
+     */
+    public static boolean findId(int id) {
+        boolean flag = false; //标记
+        //获得map
+        Map<Integer, Equipment> map = InitObject.map;
+        //遍历查找
+        for (Integer key : map.keySet()) {
+            //获得key
+            Equipment eq = map.get(key);
+            //比较是否相等
+            if (eq.getEid() == id) {
+                flag = true;
+                break;
+            }else{
+                flag=false;
+            }
+        }
+        return flag;
+    }
+
+    /**
      * 修改数据 ，并写入到文件中
+     *
      * @param equ
      * @param fileName
      */
-    public static void update(Equipment equ,File fileName) {
-        int count=0;
+    public static void update(Equipment equ, File fileName) {
+        int count = 0;
         //获得map
-        Map<Integer,Equipment> map = InitObject.map;
+        Map<Integer, Equipment> map = InitObject.map;
         //遍历查找
-        for (Integer key:map.keySet()) {
+        for (Integer key : map.keySet()) {
             //获得key
-            Equipment eq =map.get(key);
+            Equipment eq = map.get(key);
             //比较是否相等
-            if(eq.getEid()==equ.getEid()){
-               eq.setDate(equ.getDate());
-               break;
+            if (eq.getEid() == equ.getEid()) {
+                eq.setDate(equ.getDate());
+                break;
             }
         }
         System.out.println("修改成功!");
         //写入文件中
-        InitObject.SerializedObject(map,fileName);
+        InitObject.SerializedObject(map, fileName);
     }
-
 
 
 }
