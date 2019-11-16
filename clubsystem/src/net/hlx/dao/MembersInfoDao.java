@@ -82,7 +82,7 @@ public class MembersInfoDao {
     public int update(Membersinfo info){
         //sql语句
         String sql = "update membersinfo set mname=?,mgender=?,mage=?,maddress=?,memail=? where id=?";
-        return BaseDao.getUpdate(sql,info.getMname(),info.getMgender(),info.getMage(),info.getMaddress(),info.getMemail());
+        return BaseDao.getUpdate(sql,info.getMname(),info.getMgender(),info.getMage(),info.getMaddress(),info.getMemail(),info.getId());
     }
 
 }

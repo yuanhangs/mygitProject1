@@ -10,8 +10,7 @@ public class BaseDao {
     //every property objecct
     private static final String USER = "root";
     private static final String PASSWORD = "root";
-//    private static final String URL = "jdbc:mysql://localhost:3306/games?useUnicode=true&charset=utf-8";
-    private static final String URL ="jdbc:mysql://localhost:3306/games?characterEncoding=utf8&useSSL=true";
+    private static final String URL = "jdbc:mysql://localhost:3306/games?useUnicode=true&charset=utf-8";
     ;
     private static  Connection conn = null;
     private static  PreparedStatement psmt = null;
@@ -51,7 +50,6 @@ public class BaseDao {
      */
     public static ResultSet getQuery(String sql, Object...obj){
         try {
-            System.out.println("connn==>"+getConnection());
             psmt = getConnection().prepareStatement(sql);
             if(obj!=null){
                 for(int i=0;i<obj.length;i++){

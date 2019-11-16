@@ -75,4 +75,16 @@ public class Membersinfo {
     public void setMemail(String memail) {
         this.memail = memail;
     }
+
+    @Override
+    public String toString() {
+        return "Membersinfo{" +
+                "id=" + id +
+                ", mname='" + mname + '\'' +
+                ", mgender='" + mgender + '\'' +
+                ", mage=" + mage +
+                ", maddress='" + maddress + '\'' +
+                ", memail='" + memail + '\'' +
+                '}';
+    }
 }
